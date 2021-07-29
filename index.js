@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
     res.json(persons)
   })
 
-  app.get('/api/persons/info', (req, res) => {
+  app.get('/info', (req, res) => {
     res.send('<p> <h1>Phonebook has info for '+ persons.length +  ' people</h1></p> <p> <h1>' + new Date() +'</h1></p>')
   })
   
