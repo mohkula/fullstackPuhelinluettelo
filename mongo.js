@@ -3,9 +3,11 @@ const mongoose = require('mongoose')
 
 
 
-
+// eslint-disable-next-line
 const password = process.argv[2]
+// eslint-disable-next-line
 const personName = process.argv[3]
+// eslint-disable-next-line
 const personNumber = process.argv[4]
 
 const url =
@@ -19,27 +21,27 @@ const PersonSchema = new mongoose.Schema({
 })
 
 const Person = mongoose.model('Person', PersonSchema)
-
+// eslint-disable-next-line
 if (process.argv.length ===3){
-    console.log('Phonebook:')
-    Person.find({}).then(result => {
-        result.forEach(person => {
-          console.log(person.name, person.number)
-        })
-        mongoose.connection.close()
-      })
-    
+  console.log('Phonebook:')
+  Person.find({}).then(result => {
+    result.forEach(person => {
+      console.log(person.name, person.number)
+    })
+    mongoose.connection.close()
+  })
+
 }
 else{
 
-    
-    const person = new Person({
-        name: personName,
-        number: personNumber
-    })
-    
-    person.save().then(response => {
-        console.log('added', personName, 'number', personNumber, 'to phonebook')
-        mongoose.connection.close()
-    })
+
+  const person = new Person({
+    name: personName,
+    number: personNumber
+  })
+  // eslint-disable-next-line
+  person.save().then(response => {
+    console.log('added', personName, 'number', personNumber, 'to phonebook')
+    mongoose.connection.close()
+  })
 }
