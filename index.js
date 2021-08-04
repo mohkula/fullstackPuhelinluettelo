@@ -89,7 +89,7 @@ app.get('/', (req, res) => {
     return  Math.random(0,2222222222)
   }
 
-  app.post('/api/persons', (request, response) => {
+  app.post('/api/persons', (request, response, next) => {
 
 
     const body = request.body
@@ -157,7 +157,10 @@ app.get('/', (req, res) => {
 
   if (error.name === 'CastError') {
     return response.status(400).send({ error: 'malformatted id' })
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message })
   }
+  
 
   next(error)
 
